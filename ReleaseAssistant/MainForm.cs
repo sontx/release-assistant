@@ -1,12 +1,5 @@
 ﻿using ReleaseUtils;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ReleaseAssistant
@@ -14,11 +7,13 @@ namespace ReleaseAssistant
     public partial class MainForm : Form
     {
         public ReleaseInformation ReleaseInformation { get; private set; }
+        public string MetaFile { get; private set; }
 
-        public MainForm(ReleaseInformation _releaseInformation)
+        public MainForm(ReleaseInformation _releaseInformation, string metaFile)
         {
             InitializeComponent();
             this.ReleaseInformation = _releaseInformation;
+            this.MetaFile = metaFile;
             LoadToUI(_releaseInformation);
         }
 
@@ -33,49 +28,43 @@ namespace ReleaseAssistant
             txtReleaseNotes.Text = _releaseInformation.ReleaseNotes;
         }
 
-        private void btnMajor_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnMinor_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnBuild_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRevision_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnQuicklyMajor_Click(object sender, EventArgs e)
         {
-
+            btnMajor.Increase();
         }
 
         private void btnQuicklyMinor_Click(object sender, EventArgs e)
         {
-
+            btnMinor.Increase();
         }
 
         private void btnQuicklyBuild_Click(object sender, EventArgs e)
         {
-
+            btnBuild.Increase();
         }
 
         private void btnQuicklyRevision_Click(object sender, EventArgs e)
         {
-
+            btnRevision.Increase();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-
+            var newReleaseInformation = new ReleaseInformation();
+            newReleaseInformation.Version = new Version(btnMajor.Value, btnMinor.Value, btnBuild.Value, btnRevision.Value);
+            newReleaseInformation.FriendlyVersion = txtFriendlyVersion.Text.Trim();
+            newReleaseInformation.ReleaseDate = ReleaseInformation.ReleaseDate;
+            newReleaseInformation.ReleaseNotes = txtReleaseNotes.Text;
+            if (newReleaseInformation.Version.CompareTo(ReleaseInformation.Version) <= 0)
+            {
+                if (MessageBox.Show(this, "You should increase the version number for this release.",
+                    Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+            ReleaseInformationHelper.Save(newReleaseInformation, MetaFile);
+            Close();
         }
     }
 }

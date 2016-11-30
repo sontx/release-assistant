@@ -30,10 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label2 = new System.Windows.Forms.Label();
-            this.btnMajor = new ReleaseAssistant.XButton();
-            this.btnRevision = new ReleaseAssistant.XButton();
-            this.btnMinor = new ReleaseAssistant.XButton();
-            this.btnBuild = new ReleaseAssistant.XButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,7 +44,11 @@
             this.btnQuicklyMinor = new System.Windows.Forms.Button();
             this.btnQuicklyMajor = new System.Windows.Forms.Button();
             this.txtReleaseNotes = new ReleaseAssistant.XTextBox();
+            this.btnRevision = new ReleaseAssistant.XButton();
+            this.btnMinor = new ReleaseAssistant.XButton();
             this.txtFriendlyVersion = new ReleaseAssistant.XTextBox();
+            this.btnBuild = new ReleaseAssistant.XButton();
+            this.btnMajor = new ReleaseAssistant.XButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,50 +60,6 @@
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Friendly Version:";
-            // 
-            // btnMajor
-            // 
-            this.btnMajor.Location = new System.Drawing.Point(102, 12);
-            this.btnMajor.Name = "btnMajor";
-            this.btnMajor.Size = new System.Drawing.Size(42, 23);
-            this.btnMajor.TabIndex = 0;
-            this.btnMajor.Text = "0";
-            this.btnMajor.UseVisualStyleBackColor = true;
-            this.btnMajor.Value = 0;
-            this.btnMajor.Click += new System.EventHandler(this.btnMajor_Click);
-            // 
-            // btnRevision
-            // 
-            this.btnRevision.Location = new System.Drawing.Point(278, 12);
-            this.btnRevision.Name = "btnRevision";
-            this.btnRevision.Size = new System.Drawing.Size(42, 23);
-            this.btnRevision.TabIndex = 3;
-            this.btnRevision.Text = "0";
-            this.btnRevision.UseVisualStyleBackColor = true;
-            this.btnRevision.Value = 0;
-            this.btnRevision.Click += new System.EventHandler(this.btnRevision_Click);
-            // 
-            // btnMinor
-            // 
-            this.btnMinor.Location = new System.Drawing.Point(161, 12);
-            this.btnMinor.Name = "btnMinor";
-            this.btnMinor.Size = new System.Drawing.Size(42, 23);
-            this.btnMinor.TabIndex = 1;
-            this.btnMinor.Text = "0";
-            this.btnMinor.UseVisualStyleBackColor = true;
-            this.btnMinor.Value = 0;
-            this.btnMinor.Click += new System.EventHandler(this.btnMinor_Click);
-            // 
-            // btnBuild
-            // 
-            this.btnBuild.Location = new System.Drawing.Point(219, 12);
-            this.btnBuild.Name = "btnBuild";
-            this.btnBuild.Size = new System.Drawing.Size(42, 23);
-            this.btnBuild.TabIndex = 2;
-            this.btnBuild.Text = "0";
-            this.btnBuild.UseVisualStyleBackColor = true;
-            this.btnBuild.Value = 0;
-            this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
             // 
             // label1
             // 
@@ -238,6 +194,8 @@
             // 
             // txtReleaseNotes
             // 
+            this.txtReleaseNotes.AcceptsReturn = true;
+            this.txtReleaseNotes.AcceptsTab = true;
             this.txtReleaseNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtReleaseNotes.Hint = "Release Notes";
@@ -248,6 +206,28 @@
             this.txtReleaseNotes.Size = new System.Drawing.Size(218, 161);
             this.txtReleaseNotes.TabIndex = 5;
             // 
+            // btnRevision
+            // 
+            this.btnRevision.IncreaseOnClick = true;
+            this.btnRevision.Location = new System.Drawing.Point(278, 12);
+            this.btnRevision.Name = "btnRevision";
+            this.btnRevision.Size = new System.Drawing.Size(42, 23);
+            this.btnRevision.TabIndex = 3;
+            this.btnRevision.Text = "0";
+            this.btnRevision.UseVisualStyleBackColor = true;
+            this.btnRevision.Value = 0;
+            // 
+            // btnMinor
+            // 
+            this.btnMinor.IncreaseOnClick = true;
+            this.btnMinor.Location = new System.Drawing.Point(161, 12);
+            this.btnMinor.Name = "btnMinor";
+            this.btnMinor.Size = new System.Drawing.Size(42, 23);
+            this.btnMinor.TabIndex = 1;
+            this.btnMinor.Text = "0";
+            this.btnMinor.UseVisualStyleBackColor = true;
+            this.btnMinor.Value = 0;
+            // 
             // txtFriendlyVersion
             // 
             this.txtFriendlyVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -257,6 +237,28 @@
             this.txtFriendlyVersion.Name = "txtFriendlyVersion";
             this.txtFriendlyVersion.Size = new System.Drawing.Size(218, 20);
             this.txtFriendlyVersion.TabIndex = 4;
+            // 
+            // btnBuild
+            // 
+            this.btnBuild.IncreaseOnClick = true;
+            this.btnBuild.Location = new System.Drawing.Point(219, 12);
+            this.btnBuild.Name = "btnBuild";
+            this.btnBuild.Size = new System.Drawing.Size(42, 23);
+            this.btnBuild.TabIndex = 2;
+            this.btnBuild.Text = "0";
+            this.btnBuild.UseVisualStyleBackColor = true;
+            this.btnBuild.Value = 0;
+            // 
+            // btnMajor
+            // 
+            this.btnMajor.IncreaseOnClick = true;
+            this.btnMajor.Location = new System.Drawing.Point(102, 12);
+            this.btnMajor.Name = "btnMajor";
+            this.btnMajor.Size = new System.Drawing.Size(42, 23);
+            this.btnMajor.TabIndex = 0;
+            this.btnMajor.Text = "0";
+            this.btnMajor.UseVisualStyleBackColor = true;
+            this.btnMajor.Value = 0;
             // 
             // MainForm
             // 
