@@ -109,6 +109,8 @@ namespace ReleaseAssistant
 
             releaseInformation.ReleaseDate = DateTime.Now;
             releaseInformation.ReleaseNotes = releaseInformationMeta != null ? releaseInformationMeta.ReleaseNotes : "";
+            if (releaseInformation.Version == null)
+                releaseInformation.Version = new Version();
 
             return releaseInformation;
         }
