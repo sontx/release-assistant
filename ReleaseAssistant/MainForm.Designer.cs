@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label2 = new System.Windows.Forms.Label();
-            this.btnMajor = new System.Windows.Forms.Button();
-            this.btnRevision = new System.Windows.Forms.Button();
-            this.btnMinor = new System.Windows.Forms.Button();
-            this.btnBuild = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnMajor = new ReleaseAssistant.XButton();
+            this.btnRevision = new ReleaseAssistant.XButton();
+            this.btnMinor = new ReleaseAssistant.XButton();
+            this.btnBuild = new ReleaseAssistant.XButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,10 +43,10 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnQuicklyMajor = new System.Windows.Forms.Button();
-            this.btnQuicklyMinor = new System.Windows.Forms.Button();
-            this.btnQuicklyBuild = new System.Windows.Forms.Button();
             this.btnQuicklyRevision = new System.Windows.Forms.Button();
+            this.btnQuicklyBuild = new System.Windows.Forms.Button();
+            this.btnQuicklyMinor = new System.Windows.Forms.Button();
+            this.btnQuicklyMajor = new System.Windows.Forms.Button();
             this.txtReleaseNotes = new ReleaseAssistant.XTextBox();
             this.txtFriendlyVersion = new ReleaseAssistant.XTextBox();
             this.groupBox1.SuspendLayout();
@@ -71,6 +69,7 @@
             this.btnMajor.TabIndex = 0;
             this.btnMajor.Text = "0";
             this.btnMajor.UseVisualStyleBackColor = true;
+            this.btnMajor.Value = 0;
             this.btnMajor.Click += new System.EventHandler(this.btnMajor_Click);
             // 
             // btnRevision
@@ -81,6 +80,7 @@
             this.btnRevision.TabIndex = 3;
             this.btnRevision.Text = "0";
             this.btnRevision.UseVisualStyleBackColor = true;
+            this.btnRevision.Value = 0;
             this.btnRevision.Click += new System.EventHandler(this.btnRevision_Click);
             // 
             // btnMinor
@@ -91,6 +91,7 @@
             this.btnMinor.TabIndex = 1;
             this.btnMinor.Text = "0";
             this.btnMinor.UseVisualStyleBackColor = true;
+            this.btnMinor.Value = 0;
             this.btnMinor.Click += new System.EventHandler(this.btnMinor_Click);
             // 
             // btnBuild
@@ -101,6 +102,7 @@
             this.btnBuild.TabIndex = 2;
             this.btnBuild.Text = "0";
             this.btnBuild.UseVisualStyleBackColor = true;
+            this.btnBuild.Value = 0;
             this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
             // 
             // label1
@@ -194,25 +196,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Quickly?";
             // 
-            // btnQuicklyMajor
+            // btnQuicklyRevision
             // 
-            this.btnQuicklyMajor.Location = new System.Drawing.Point(10, 24);
-            this.btnQuicklyMajor.Name = "btnQuicklyMajor";
-            this.btnQuicklyMajor.Size = new System.Drawing.Size(286, 23);
-            this.btnQuicklyMajor.TabIndex = 0;
-            this.btnQuicklyMajor.Text = "Not backward compatible";
-            this.btnQuicklyMajor.UseVisualStyleBackColor = true;
-            this.btnQuicklyMajor.Click += new System.EventHandler(this.btnQuicklyMajor_Click);
-            // 
-            // btnQuicklyMinor
-            // 
-            this.btnQuicklyMinor.Location = new System.Drawing.Point(10, 53);
-            this.btnQuicklyMinor.Name = "btnQuicklyMinor";
-            this.btnQuicklyMinor.Size = new System.Drawing.Size(286, 23);
-            this.btnQuicklyMinor.TabIndex = 1;
-            this.btnQuicklyMinor.Text = "New or changes feature, still backward compatible";
-            this.btnQuicklyMinor.UseVisualStyleBackColor = true;
-            this.btnQuicklyMinor.Click += new System.EventHandler(this.btnQuicklyMinor_Click);
+            this.btnQuicklyRevision.Location = new System.Drawing.Point(10, 111);
+            this.btnQuicklyRevision.Name = "btnQuicklyRevision";
+            this.btnQuicklyRevision.Size = new System.Drawing.Size(286, 23);
+            this.btnQuicklyRevision.TabIndex = 3;
+            this.btnQuicklyRevision.Text = "Fixes a security hole or bugs in a previously release";
+            this.btnQuicklyRevision.UseVisualStyleBackColor = true;
+            this.btnQuicklyRevision.Click += new System.EventHandler(this.btnQuicklyRevision_Click);
             // 
             // btnQuicklyBuild
             // 
@@ -224,15 +216,25 @@
             this.btnQuicklyBuild.UseVisualStyleBackColor = true;
             this.btnQuicklyBuild.Click += new System.EventHandler(this.btnQuicklyBuild_Click);
             // 
-            // btnQuicklyRevision
+            // btnQuicklyMinor
             // 
-            this.btnQuicklyRevision.Location = new System.Drawing.Point(10, 111);
-            this.btnQuicklyRevision.Name = "btnQuicklyRevision";
-            this.btnQuicklyRevision.Size = new System.Drawing.Size(286, 23);
-            this.btnQuicklyRevision.TabIndex = 3;
-            this.btnQuicklyRevision.Text = "Fixes a security hole or bugs in a previously release";
-            this.btnQuicklyRevision.UseVisualStyleBackColor = true;
-            this.btnQuicklyRevision.Click += new System.EventHandler(this.btnQuicklyRevision_Click);
+            this.btnQuicklyMinor.Location = new System.Drawing.Point(10, 53);
+            this.btnQuicklyMinor.Name = "btnQuicklyMinor";
+            this.btnQuicklyMinor.Size = new System.Drawing.Size(286, 23);
+            this.btnQuicklyMinor.TabIndex = 1;
+            this.btnQuicklyMinor.Text = "New or changes feature, still backward compatible";
+            this.btnQuicklyMinor.UseVisualStyleBackColor = true;
+            this.btnQuicklyMinor.Click += new System.EventHandler(this.btnQuicklyMinor_Click);
+            // 
+            // btnQuicklyMajor
+            // 
+            this.btnQuicklyMajor.Location = new System.Drawing.Point(10, 24);
+            this.btnQuicklyMajor.Name = "btnQuicklyMajor";
+            this.btnQuicklyMajor.Size = new System.Drawing.Size(286, 23);
+            this.btnQuicklyMajor.TabIndex = 0;
+            this.btnQuicklyMajor.Text = "Not backward compatible";
+            this.btnQuicklyMajor.UseVisualStyleBackColor = true;
+            this.btnQuicklyMajor.Click += new System.EventHandler(this.btnQuicklyMajor_Click);
             // 
             // txtReleaseNotes
             // 
@@ -294,11 +296,10 @@
         #endregion
         private System.Windows.Forms.Label label2;
         private XTextBox txtFriendlyVersion;
-        private System.Windows.Forms.Button btnMajor;
-        private System.Windows.Forms.Button btnBuild;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button btnRevision;
-        private System.Windows.Forms.Button btnMinor;
+        private XButton btnMajor;
+        private XButton btnBuild;
+        private XButton btnRevision;
+        private XButton btnMinor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

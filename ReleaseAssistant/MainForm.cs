@@ -18,6 +18,18 @@ namespace ReleaseAssistant
         {
             InitializeComponent();
             this.ReleaseInformation = _releaseInformation;
+            LoadToUI(_releaseInformation);
+        }
+
+        private void LoadToUI(ReleaseInformation _releaseInformation)
+        {
+            btnMajor.Value = _releaseInformation.Version.Major;
+            btnMinor.Value = _releaseInformation.Version.Minor;
+            btnBuild.Value = _releaseInformation.Version.Build;
+            btnRevision.Value = _releaseInformation.Version.Revision;
+
+            txtFriendlyVersion.Text = _releaseInformation.FriendlyVersion;
+            txtReleaseNotes.Text = _releaseInformation.ReleaseNotes;
         }
 
         private void btnMajor_Click(object sender, EventArgs e)
