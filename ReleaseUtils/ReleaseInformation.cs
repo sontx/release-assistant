@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ReleaseAssistant
+namespace ReleaseUtils
 {
     [Serializable]
     public class ReleaseInformation

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReleaseUtils;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -67,11 +68,11 @@ namespace ReleaseAssistant
                 if (!string.IsNullOrEmpty(metaFile))
                 {
                     if (metaFile != null && assemblyInfoFile != null)
-                        releaseInformation = ReleaseInformationLoader.Load(metaFile, assemblyInfoFile, merge);
+                        releaseInformation = ReleaseInformationHelper.Load(metaFile, assemblyInfoFile, merge);
                     else if (metaFile != null)
-                        releaseInformation = ReleaseInformationLoader.LoadFromMeta(metaFile);
+                        releaseInformation = ReleaseInformationHelper.LoadFromMeta(metaFile);
                     else if (assemblyInfoFile != null)
-                        releaseInformation = ReleaseInformationLoader.LoadFromAssembly(assemblyInfoFile);
+                        releaseInformation = ReleaseInformationHelper.LoadFromAssembly(assemblyInfoFile);
                 }
                 if (releaseInformation == null)
                     ShowHelp();

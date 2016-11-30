@@ -1,6 +1,6 @@
-﻿namespace ReleaseAssistant
+﻿namespace ReleaseUtils
 {
-    enum Mege
+    public enum Mege
     {
         None,
         PreferAssembly,

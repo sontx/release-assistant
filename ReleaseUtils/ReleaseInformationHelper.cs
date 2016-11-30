@@ -3,9 +3,9 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace ReleaseAssistant
+namespace ReleaseUtils
 {
-    internal static class ReleaseInformationLoader
+    public static class ReleaseInformationHelper
     {
         private static ReleaseInformation TryLoadReleaseMeta(string metaFile)
         {
@@ -39,7 +39,7 @@ namespace ReleaseAssistant
             }
         }
 
-        public static string TryGetAssemblyAttribute(string allContent, string assemblyAttribute)
+        private static string TryGetAssemblyAttribute(string allContent, string assemblyAttribute)
         {
             int attributeIndex = allContent.IndexOf(assemblyAttribute);
             if (attributeIndex < 0)
@@ -123,6 +123,11 @@ namespace ReleaseAssistant
         public static ReleaseInformation LoadFromAssembly(string assemblyInfoFile)
         {
             return Load(null, assemblyInfoFile, Mege.None);
+        }
+
+        public static void Save(ReleaseInformation releaseInformation, string metaFile)
+        {
+            File.WriteAllText(metaFile, GetStringFromReleaseMeta(releaseInformation));
         }
     }
 }
